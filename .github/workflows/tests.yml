@@ -45,7 +45,8 @@ jobs:
       - run: brew test-bot --only-setup
 
       - run: brew test-bot --only-tap-syntax
-      - run: brew test-bot --only-formulae
+      # bottles are hosted on GitHub Packages (ghcr.io); see publish.yml
+      - run: brew test-bot --only-formulae --root-url=https://ghcr.io/v2/gyane14/tap
         if: github.event_name == 'pull_request'
 
       - name: Upload bottles as artifact
