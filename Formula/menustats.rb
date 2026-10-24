@@ -5,6 +5,13 @@ class Menustats < Formula
   sha256 "946dfec32f1a6f9698edf5bb3dccf90c38c05beb3269d5b1a97fdc13191b9d4f"
   license "GPL-3.0-only"
 
+  bottle do
+    root_url "https://github.com/gyane14/homebrew-tap/releases/download/menustats-0.1.0"
+    rebuild 1
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "da4f28cf2354639f25c1251f3a014572abeaf56068fd72f897c36fa7a723bbe0"
+    sha256 cellar: :any_skip_relocation, sequoia:       "9ad445952344aba0beb5d815d050ce87467aea256c92e1c0b387e2df921264d3"
+  end
+
   depends_on macos: :ventura
 
   def install
