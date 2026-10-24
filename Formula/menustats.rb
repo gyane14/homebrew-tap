@@ -5,6 +5,12 @@ class Menustats < Formula
   sha256 "f17e28d51792e3c304269145617e219d8664c00ace0468ed529bde0bd1df5973"
   license "GPL-3.0-only"
 
+  bottle do
+    root_url "https://ghcr.io/v2/gyane14/tap"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "845a7948ef06ee44c759a22f558495f1699d27169ac1a6c59997951ef4cbf633"
+    sha256 cellar: :any_skip_relocation, sequoia:       "128d4a9a23837fbded49f4f7cf3bbc96995ec91723dd59cee216ba715ecc60ae"
+  end
+
   depends_on macos: :ventura
 
   def install
