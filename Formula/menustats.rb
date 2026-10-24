@@ -10,20 +10,15 @@ class Menustats < Formula
   def install
     contents = prefix/"MenuStats.app/Contents"
     (contents/"MacOS").mkpath
-    system "swiftc", "-O", "main.swift", "-o", contents/"MacOS/MenuStats"
+    # target the app's minimum macOS (Info.plist), not the build machine's, so bottles run on older systems
+    system "swiftc", "-O", "-target", "#{Hardware::CPU.arch}-apple-macos13.0",
+           "main.swift", "-o", contents/"MacOS/MenuStats"
     contents.install "Info.plist"
     bin.install_symlink contents/"MacOS/MenuStats" => "menustats"
   end
 
   service do
     run opt_prefix/"MenuStats.app/Contents/MacOS/MenuStats"
-  end
-
-  def caveats
-    <<~EOS
-      Start MenuStats now and at every login:
-        brew services start menustats
-    EOS
   end
 
   test do
